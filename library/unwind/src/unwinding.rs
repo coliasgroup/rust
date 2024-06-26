@@ -35,6 +35,7 @@ pub enum _Unwind_Context {}
 
 pub use unwinding::custom_eh_frame_finder::{
     set_custom_eh_frame_finder, EhFrameFinder, FrameInfo, FrameInfoKind,
+    SetCustomEhFrameFinderError,
 };
 
 pub type _Unwind_Exception_Class = u64;

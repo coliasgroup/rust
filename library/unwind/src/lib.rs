@@ -21,7 +21,6 @@ cfg_if::cfg_if! {
         // Windows MSVC no extra unwinder support needed
     } else if #[cfg(any(
         target_os = "l4re",
-        target_os = "none",
         target_os = "espidf",
     ))] {
         // These "unix" family members do not have unwinder.
@@ -34,7 +33,7 @@ cfg_if::cfg_if! {
     ))] {
         mod libunwind;
         pub use libunwind::*;
-    } else if #[cfg(target_os = "xous")] {
+    } else if #[cfg(any(target_os = "xous", target_os = "none"))] {
         mod unwinding;
         pub use unwinding::*;
     } else if #[cfg(target_family = "wasm")] {
